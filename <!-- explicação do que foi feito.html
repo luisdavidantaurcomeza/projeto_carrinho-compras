@@ -1,0 +1,99 @@
+<!-- explicação do que foi feito
+
+Você precisará declarar as funções adicionar e limpar, no arquivo app.js:
+
+function adicionar() {
+
+}
+
+function limpar() {
+
+}
+Agora, dentro da função adicionar, será necessário declarar variáveis que representam o produto selecionado e a quantidade digitada no formulário, além de exibir seus valores com a função alert:
+
+function adicionar() {
+    let nomeProduto = document.getElementById('produto');
+    let quantidade = document.getElementById('quantidade');
+
+    alert(nomeProduto.value);
+    alert(quantidade.value);
+}
+Pronto! Abra a página do projeto no navegador e verifique se as informações estão sendo exibidas corretamente.
+
+
+Você precisará declarar novas variáveis na função adicionar, para representar o nome do produto e o seu preço, utilizando a função split para fazer a separação dessas informações:
+
+let produto = document.getElementById('produto').value;
+let nomeProduto = produto.split('-')[0];
+let valorUnitario = produto.split('R$')[1];
+let quantidade = document.getElementById('quantidade');
+
+alert(nomeProduto);
+alert(quantidade.value);
+Agora, você precisa calcular o preço do produto, de acordo com a quantidade, e armazená-lo em outra variável:
+
+let preco = quantidade.value * valorUnitario;
+alert(preco);
+Pronto! Abra a página do projeto no navegador e verifique se as informações estão sendo exibidas corretamente.
+
+
+Você precisará declarar uma nova variável, na função adicionar, para representar o carrinho de compras da página:
+
+let carrinho = document.getElementById('lista-produtos');
+Agora, precisa concatenar no html desse carrinho o novo produto adicionado, utilizando as mesmas tags html que representam um produto no carrinho:
+
+carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
+    <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul">R${preco}</span>
+  </section>`;
+Pronto! Abra a página do projeto no navegador e verifique se o produto está sendo adicionado corretamente no carrinho.
+
+Você precisará declarar uma nova variável para representar o valor total do carrinho, sendo que essa variável deve ser declarada no início do arquivo app.js, ou seja, fora das funções:
+
+let totalGeral;
+Agora, na função adicionar, será necessário calcular e atualizar o novo valor total, além de zerar a quantidade:
+
+totalGeral = totalGeral + preco;
+let campoTotal = document.getElementById('valor-total');
+campoTotal.textContent = `R$ ${totalGeral}`;
+document.getElementById('quantidade').value = 0;
+COPIAR CÓDIGO
+Em sequência, você precisa escrever o código da função limpar, que será responsável por zerar o carrinho e o valor total da compra:
+
+function limpar() {
+    totalGeral = 0;
+    document.getElementById('lista-produtos').innerHTML = '';
+    document.getElementById('valor-total').textContent = 'R$0';
+}
+Por fim, você precisa chamar a função limpar no início do arquivo app.js, após a declaração da variável totalGeral:
+
+limpar();
+Pronto! Abra a página do projeto no navegador e verifique se todas as funcionalidades estão funcionando conforme o esperado.
+
+Confira o código final do arquivo app.js:
+
+let totalGeral;
+limpar();
+
+function adicionar() {
+    let produto = document.getElementById('produto').value;
+    let nomeProduto = produto.split('-')[0];
+    let valorUnitario = produto.split('R$')[1];
+    let quantidade = document.getElementById('quantidade').value;
+    let preco = quantidade * valorUnitario;
+
+    let carrinho = document.getElementById('lista-produtos');
+    carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
+    <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul">R${preco}</span>
+  </section>`;
+
+    totalGeral = totalGeral + preco;
+    let campoTotal = document.getElementById('valor-total');
+    campoTotal.textContent = `R$ ${totalGeral}`;
+    document.getElementById('quantidade').value = 0;
+}
+
+function limpar() {
+    totalGeral = 0;
+    document.getElementById('lista-produtos').innerHTML = '';
+    document.getElementById('valor-total').textContent = 'R$0';
+} -->

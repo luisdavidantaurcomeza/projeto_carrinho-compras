@@ -24,8 +24,6 @@ function adicionar(){
     document.getElementById('quantidade').value = 0;
 
 
-
-
 } 
 
 function limpar(){
